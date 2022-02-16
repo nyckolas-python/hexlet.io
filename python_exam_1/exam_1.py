@@ -265,20 +265,63 @@ def mirror_matrix(l):
 
 
 def snail_path(m):
-    f = lambda m: m and m.pop(0) + f([list(x) for x in zip(*m)][::-1])
-    return print(m if not m else m.pop(0) +
-                 f(list(list(x) for x in zip(*m))[::-1]))
+	f = lambda m: m and m.pop(0) + f([list(x) for x in zip(*m)][::-1])
+	return print(m if not m else m.pop(0) +
+				f(list(list(x) for x in zip(*m))[::-1]))
 
+def multiply(m1,m2):
+    tmp = []
+    m3 = []
+    s = 0
+    if len(m2) == len(m1[0]):	# количество столбцов m1 матрицы должно быть равно количеству строк m2 матрицы
+        #print('ok')
+        r1 = len(m1)    # количество строк m1
+        c1 = len(m1[0])    # количество столбцов m1
+        r2 = c1    #  количество строк m2
+        c2=len(m2[0])    # количество столбцов m2
+        for z in range(0,r2): # цыкл сколько строк в т2
+            for j in range(0, c2): # цыкл сколько столбцов в т2
+                for i in range(0, c1): # сколько столбцов в т1
+                    s += m1[z][i]*m2[i][j]  # вычисляем каждые элемент
+                tmp.append(s) # добавляем элемент в строку
+                s = 0   # обнуляем элемент
+            m3.append(tmp) # добавляем строку новую матрицу
+            tmp = [] # обнуляем строку
+        return print(m3)
+    else: print('количество столбцов матрицы 1 должно быть равно количеству строк матрицы 2 !!!')
+
+def multiply2(a,b):
+    m = len(a)                                            # a: m × n
+    n = len(b)                                            # b: n × k
+    k = len(b[0])
+
+    c = [[None for __ in range(k)] for __ in range(m)]    # c: m × k
+
+    for i in range(m):
+        for j in range(k):       
+            c[i][j] = sum(a[i][kk] * b[kk][j] for kk in range(n))
+ 
+    print(c)
 
 def test():
 
-    l = [[1, 2], [3, 4]]
-    snail_path(l)
-    l = [[1, 2, 3], [8, 9, 4], [7, 6, 5]]
-    snail_path(l)
-    l = [['b', 'c', 'a'], ['3', True, 11], [None, 'foo', 0]]
-    snail_path(l)
-
+	A = [
+		[1, 2],
+		[3, 2]]
+	B = [
+		[3, 2],
+		[1, 1]]
+	multiply2(A, B)
+	C = [
+		[2, 5],
+		[6, 7],
+		[1, 8],
+		]
+	D = [
+		[1, 2, 1],
+		[0, 1, 0],
+		]
+	multiply2(C, D)
 
 if __name__ == '__main__':
     test()
