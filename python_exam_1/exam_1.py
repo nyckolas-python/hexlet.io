@@ -265,8 +265,10 @@ def mirror_matrix(l):
 
 
 def snail_path(m):
-	f = lambda m: m and m.pop(0) + f([list(x) for x in zip(*m)][::-1])
-	return print(m if not m else m.pop(0) +
+    # берем матрицу, отрезаем первую строку, оставшуюся часть поворачиваем против часовой стрелки на 90 градусов
+    f = lambda m: m and m.pop(0) + f([list(x) for x in zip(*m)][::-1])  # и рекурсивно применяем этот же алгоритм.
+	# то же самое только в более длинном коде, предыдущая вариант
+    return print(m if not m else m.pop(0) +
 				f(list(list(x) for x in zip(*m))[::-1]))
 
 def multiply(m1,m2):
