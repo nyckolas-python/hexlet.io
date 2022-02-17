@@ -2,7 +2,6 @@
 
 import collections
 import itertools
-from optparse import Values
 
 
 def is_continuous_sequence(a):
@@ -273,6 +272,7 @@ def snail_path(m):
     return print(m if not m else m.pop(0) +
 				f(list(list(x) for x in zip(*m))[::-1]))
 
+
 def multiply(m1,m2):
     tmp = []
     m3 = []
@@ -294,6 +294,7 @@ def multiply(m1,m2):
         return print(m3)
     else: print('количество столбцов матрицы 1 должно быть равно количеству строк матрицы 2 !!!')
 
+
 def multiply2(a,b):
     m = len(a)                                            # a: m × n
     n = len(b)                                            # b: n × k
@@ -306,6 +307,7 @@ def multiply2(a,b):
             c[i][j] = sum(a[i][kk] * b[kk][j] for kk in range(n))
  
     print(c)
+
 
 def visualize(alist, bar_char = '$'): 
     cnt = collections.Counter(alist)    # Counter({1: 5, 2: 4, 3: 4, 20: 3, 10: 1}) подсчёт повторений выводит в кортеж
@@ -338,7 +340,7 @@ def test():
 
     alist2 = (10,10,10,1,1,1,20,20,20,2,2,2,5,3,3,3,5,5,5)
     print(visualize(alist2))
-	
+
 
 if __name__ == '__main__':
     test()
