@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 
+import collections
 import itertools
+from optparse import Values
 
 
 def is_continuous_sequence(a):
@@ -305,25 +307,38 @@ def multiply2(a,b):
  
     print(c)
 
+def visualize(alist, bar_char = '$'): 
+    cnt = collections.Counter(alist)    # Counter({1: 5, 2: 4, 3: 4, 20: 3, 10: 1}) подсчёт повторений выводит в кортеж
+    items = sorted(cnt.items()) # [(1, 5), (2, 4), (3, 4), (10, 1), (20, 3)] сортируем по возростанию
+    count = [int(items[_][1]) for _ in range(len(items))]   # [5, 4, 4, 1, 3] количество монет в нужном порядке
+    coin = [int(items[_][0]) for _ in range(len(items))]    # [1, 2, 3, 10, 20] номинал в нужном порядке
+    column = max(count)   # max(count) - количество рядов зависит от максимального значения количества монет
+    s = [[0 for i in range(len(count))] for j in range(column+3)] # генератор матрицы +3 допряда для (кол. монет,'---', номинал)
+    for i in range(len(count)):
+        for j in range(column+3):
+            if j + count[i] == column:    # сразу над монетами - количество
+                s[j][i] = str(count[i])+(3-len(str(count[i])))*' '    # количество монет
+            elif j + count[i] < column:    # сразу над количеством 3 пробела
+                s[j][i] = '   '    # 3 пробела
+            elif j < column+1 and j + count[i] > column:    # количеством знак монеты
+                s[j][i] = bar_char+bar_char+' '
+            elif j == column+1 and j + count[i] > column:    # после знаков bar_char прочерки
+                if i == len(count)-1: s[j][i] = '--'    # на последнем елементе делаем два "--"
+                else: s[j][i] = '---'   # во всех остальных елементах делаем три "---"
+            else:
+                s[j][i] = str(coin[i])+(3-len(str(coin[i])))*' '    # на последнем ряду номинал монет
+    s = '\n'.join([''.join([_ for _ in _]) for _ in s]) # склеиваем матрицу, убираем запятые, добавляем перенос строки
+    return s
+
+
 def test():
 
-	A = [
-		[1, 2],
-		[3, 2]]
-	B = [
-		[3, 2],
-		[1, 1]]
-	multiply2(A, B)
-	C = [
-		[2, 5],
-		[6, 7],
-		[1, 8],
-		]
-	D = [
-		[1, 2, 1],
-		[0, 1, 0],
-		]
-	multiply2(C, D)
+    alist = (10,1,1,1,1,1,20,20,20,2,2,2,2,3,3,3,3)
+    print(visualize(alist))
+
+    alist2 = (10,10,10,1,1,1,20,20,20,2,2,2,5,3,3,3,5,5,5)
+    print(visualize(alist2))
+	
 
 if __name__ == '__main__':
     test()
