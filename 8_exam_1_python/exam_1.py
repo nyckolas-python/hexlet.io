@@ -271,7 +271,7 @@ def snail_path(m):
 	# то же самое только в более длинном коде, предыдущая вариант
     return print(m if not m else m.pop(0) +
 				f(list(list(x) for x in zip(*m))[::-1]))
-
+                
 
 def multiply(m1,m2):
     tmp = []
