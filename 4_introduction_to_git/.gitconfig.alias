@@ -1,0 +1,20 @@
+[user]
+        name = nyckolas
+        email = nyckolas.work@gmail.com
+[credential]
+        helper = /mnt/c/Program\\ Files/Git/mingw64/libexec/git-core/git-credential-manager-core.exe
+[alias]
+        ci = commit
+        co = checkout
+        br = branch
+        st = status
+        lol = log --graph --decorate --pretty=oneline --abbrev-commit
+        unstage = reset HEAD --
+        di = diff
+        cma = commit -a -m
+        cm = commit -m
+        nb = checkout -b
+        hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short --decorate
+        grog = log --graph --abbrev-commit --decorate --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(dim white) - %a>
+[core]
+        editor = nano
