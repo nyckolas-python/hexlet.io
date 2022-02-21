@@ -14,9 +14,9 @@ def find_index_2(item, list):
 			if count == 2:
 				return i
 	if count == 1:
-        	return None
+		return None
 	elif item not in list:
-    		return None
+		return None
 
 def find_index_3(item, list):
 	input(item, list)
