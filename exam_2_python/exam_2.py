@@ -7,10 +7,17 @@ def to_rna(dna):
 		rna += d[v]
 	return rna
 
+def build_query_string(param):
+	result = ''
+	for i in param:
+		result =''.join(str(i)+str(param[i])) + result
+	return print(result)
+
+
 def test():
 
-	dna = ('ACGTGGTCTTAA')
-	print(to_rna(dna))
+	param = {'per': 10, 'page': 1}
+	build_query_string(param)
 
 
 if __name__ == '__main__':
