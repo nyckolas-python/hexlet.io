@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import roman
 
 def to_rna(dna):
 	d = {'G': 'C', 'C': 'G', 'T': 'A', 'A': 'U'}
@@ -39,43 +40,19 @@ def to_roman(num):
 		return print(False)
 
 def to_arabic(txt):
-	roman = { # Dictionary of roman numbers
-		3000: 'M',
-		2000: 'M',
-		1000: 'M',
-		900: 'CM',
-		500: 'D',
-		400: 'CD',
-		100: 'C',
-		90: 'XC',
-		50: 'L',
-		40: 'XL',
-		10: 'X',
-		9: 'IX',
-		5: 'V',
-		4: 'IV',
-		1: 'I'
-		}
-	result = 0
 	txt = txt.upper()
-	for i in roman:
-		while txt.startswith(roman[i]):
-			result += i
-			txt = txt[len(roman[i]):]
-			print(txt[len(roman[i]):])
-			print(txt)
-			#print(roman[i])
-			#print(i)
-	if txt == '':
-		return print(result)
-	else: return print(False)
-
+	try:
+		res = roman.fromRoman(txt)
+		print(res)
+    	
+	except roman.InvalidRomanNumeralError:
+		print('Вы указали НЕ Римское число!')
 
 def test():
 
 	num = 3999
 	to_roman(num)
-	to_arabic('VVVV')
+	to_arabic('MMMCMXCIX')
 
 
 if __name__ == '__main__':
