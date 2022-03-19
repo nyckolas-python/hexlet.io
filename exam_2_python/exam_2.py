@@ -35,16 +35,17 @@ def to_roman(num):
 		for i in roman:
 			result += num // i * roman[i]
 			num %= i
-		return print(result)
+		return result
+		print(result)
 	else:
-		return print(False)
+		return False
+		print(False)
 
 def to_arabic(txt):
 	txt = txt.upper()
 	try:
 		res = roman.fromRoman(txt)
 		print(res)
-    	
 	except roman.InvalidRomanNumeralError:
 		print('Вы указали НЕ Римское число!')
 
