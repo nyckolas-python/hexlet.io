@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import roman
+from  collections import Counter
 
 def to_rna(dna):
 	d = {'G': 'C', 'C': 'G', 'T': 'A', 'A': 'U'}
@@ -49,7 +50,7 @@ def to_arabic(txt):
 	except roman.InvalidRomanNumeralError:
 		print('Вы указали НЕ Римское число!')
 
-def find_where(data: dict, d1: dict):
+def find_where(data, d1):
 	for d2 in data:
 		if all(k in d2 and d1[k] == d2[k] for k in d1) == True: # сравниваем есть ли все елементы словаря d1 в d2
 			print(d2)
@@ -57,7 +58,7 @@ def find_where(data: dict, d1: dict):
 	print(None)
 	return None
 
-def find_where_2(data: dict, search: dict):
+def find_where_2(data, search):
 	check_keys = False
 	check_values = False
 	for i in data:
@@ -69,18 +70,21 @@ def find_where_2(data: dict, search: dict):
 	print(None)
 	return None
 
+def scrabble(abc, word):
+	d1 = dict(Counter(word.lower()))
+	d2 = dict(Counter(abc.lower()))
+	print(d1) # {'w': 1, 'o': 1, 'r': 1, 'l': 1, 'd': 1}
+	print(d2) # {'r': 1, 'k': 1, 'q': 1, 'o': 1, 'd': 1, 'l': 1, 'w': 1}
+	print(all(k in d2 and d1[k] <= d2[k] for k in d1)) # сравниваем все значения <= всех елементов словаря d1 в d2
+	return all(k in d2 and d1[k] <= d2[k] for k in d1)
 
 def test():
 
-	books = [
-	{'title': 'Book of Fooos', 'author': 'Foo', 'year': 1111},
-	{'title': 'Cymbeline', 'author': 'Shakespeare', 'year': 1611},
-	{'title': 'The Tempest', 'author': 'Shakespeare', 'year': 1611},
-	{'title': 'Book of Foos Barrrs', 'author': 'FooBar', 'year': 2222},
-	{'title': 'Still foooing', 'author': 'FooBar', 'year': 333},
-	{'title': 'Happy Foo', 'author': 'FooBar', 'year': 4444},
-	]
-	find_where(books, {'author': 'Shakespeare', 'year': 1611})
+	scrabble('rkqodlw', 'world') # True
+	scrabble('avj', 'java') # False
+	scrabble('avjafff', 'java') # True
+	scrabble('', 'hexlet') # False
+	scrabble('scriptingjava', 'JavaScript') # True
 
 
 if __name__ == '__main__':
