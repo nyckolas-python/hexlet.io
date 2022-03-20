@@ -1,4 +1,4 @@
-def find_where(data: dict, d1: dict):
+def find_where(data, d1):
 	for d2 in data:
 		if all(k in d2 and d1[k] == d2[k] for k in d1) == True: # сравниваем есть ли все елементы словаря d1 в d2
 			print(d2)
@@ -6,7 +6,7 @@ def find_where(data: dict, d1: dict):
 	print(None)
 	return None
 
-def find_where_2(data: dict, search: dict):
+def find_where_2(data, search):
 	check_keys = False
 	check_values = False
 	for i in data:
