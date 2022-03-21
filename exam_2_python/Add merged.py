@@ -4,7 +4,7 @@ def merged(*alist): # *args ф-ция может принимать множес
 	x = defaultdict(set) # если елемента нет в словаре добавляем его, значения в виде множества
 	for i in alist:
 		for k, v in i.items():
-			x[k].add(v)
+			x[k].add(v) # если элекмент есть в словаре, то дополнится множество значений
 			#print(dict(x)) # выводим на экран каждую итерацию
 	print(dict(x))
 	return dict(x)
