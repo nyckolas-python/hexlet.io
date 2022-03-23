@@ -1,4 +1,3 @@
-
 def call_twice(function, abc):
 	a = function(abc)
 	b = function(abc)
