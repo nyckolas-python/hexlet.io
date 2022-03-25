@@ -9,4 +9,4 @@ def greet(name, surname):
 	return print(res)
 
 f = partial_apply(greet, 'Dorian')
-f('Gray') # function(name, inner)
+f('Gray') # Hello, Dorian Gray!
