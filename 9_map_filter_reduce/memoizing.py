@@ -9,7 +9,7 @@ def memoizing(count):
 				return res
 			else: # Если аргумента нет в словаре
 				res = function(*args, **kwargs)
-				while len(cache) >= count: # Віполняем если словарь больше или равно count
+				while len(cache) >= count: # Выполняем если количество элем в словаре больше/равно count
 					first_key = list(cache.keys())[0] # Берём ключ первого элемента словаря
 					cache.pop(first_key) # Удаляем элемент словаря по ключу
 				else:
@@ -31,4 +31,5 @@ f(2) # Calculating... 20
 f(3) # Calculating... 30
 f(4) # Calculating... 40
 f(1) # Calculating... 10
+f(3) # We have in cache: 30
 print(cache) # {3: 30, 4: 40, 1: 10}
