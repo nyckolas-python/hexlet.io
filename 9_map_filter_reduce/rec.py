@@ -69,3 +69,21 @@ vlozhenie(a)
 10 [11] 12 level = 8
 11 level = 9
 '''
+def collatz(n):
+	if n == 1:
+		return True
+	if n % 2 == 0:
+		return collatz(n // 2)
+	return collatz(n * 3 + 1)
+
+print(collatz(10))
+
+def is_even(n):
+    if (n < 2):
+        return (n % 2 == 0)
+    return (is_even(n - 2))
+n = int(input("Введите число:"))
+if (is_even(n) == True):
+		print("Число четное!")
+else:
+			print("Число нечетное!")
