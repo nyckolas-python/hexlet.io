@@ -9,9 +9,10 @@ def find_index_of_nearest(n, alist):
 		#print(minlist)
 		print(index)
 		return index
-	else:
-		print(None) 
-		return None
+	print(None) 
+	return None
+
+# Test Program	
 find_index_of_nearest(2, []) is None
 # True
 find_index_of_nearest(0, [15, 10, 3, 4])
