@@ -30,8 +30,8 @@ def hex2rgb(line):
 # Test Program
 
 rgb2hex(36, 171, 0);
-# '#24ab00'
+# '#24AB00'
 rgb2hex(r=36, g=171, b=0)
-# '#24ab00'
+# '#24AB00'
 hex2rgb('#24ab00')
 # {'r': 36, 'g': 171, 'b': 0}
