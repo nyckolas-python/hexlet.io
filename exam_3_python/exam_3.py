@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+from operator import itemgetter
 from typing import Counter
 
 
@@ -81,13 +82,54 @@ def decode(physical_signal):
 	print(bits)
 	return bits
 
-	
+
+def find_index_of_nearest(n, alist):
+	if len(alist) > 0:
+		minlist = list(map(lambda x: abs(x-n), alist))
+		index = min(enumerate(minlist), key=itemgetter(1))[0]
+		#print(minlist)
+		print(index)
+		return index
+	print(None) 
+	return None	
+
+def conv(n,ri=10,ro=16):
+	digs="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+	acc=0
+	res=""
+	if n in {0, '00', '0'}:
+		res='00'		
+	for a in str(n).upper():
+		k=digs.find(a)
+		acc=acc*ri+k		
+	while(acc>0):
+		k=acc%ro
+		res=digs[k]+res
+		acc=acc//ro
+	return res
+
+def rgb2hex(r,g,b):
+	hex = conv(r) + conv(g) + conv(b)
+	print(hex)
+	return hex
+
+def hex2rgb(line):
+	rgb = {}
+	rgb['r'] = conv(line[1:3],16,10)
+	rgb['g'] = conv(line[3:5],16,10)
+	rgb['b'] = conv(line[5:],16,10)
+	print(rgb)
+	return rgb
+
 
 def test():
 
-	print(decode('_|¯|____|¯|__|¯¯¯') == '011000110100')
-	print(decode('|¯|___|¯¯¯¯¯|___|¯|_|¯') == '110010000100111')
-	print(decode('¯|___|¯¯¯¯¯|___|¯|_|¯') == '010010000100111')
+	rgb2hex(36, 171, 0);
+	# '#24ab00'
+	rgb2hex(r=36, g=171, b=0)
+	# '#24ab00'
+	hex2rgb('#24ab00')
+	# {'r': 36, 'g': 171, 'b': 0}
 
 if __name__ == '__main__':
 	test()
