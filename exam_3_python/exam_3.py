@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+from functools import wraps
 from ipaddress import IPv4Address
 from operator import itemgetter
 from typing import Counter
@@ -150,22 +151,46 @@ def int2ip(ipnum):
 		print(res_line)
 		return line
 
+input_dict = {}
 
+def interactive(text:str):
+	def wrapped(func):
+		@wraps(func)
+		def inner():
+			print(text)			
+			print(func())
+		return inner
+	return wrapped
+
+def asks(key:str, ask_number:str):
+	def wrapped(func):
+		@wraps(func)
+		def inner(*args, **kwargs):
+			value = input(ask_number)
+			input_dict[key] = value	
+			return func(*input_dict.values())
+		return inner
+	return wrapped
+
+	
+	
 def test():
 
-	ip2int('128.32.10.1')
-	# 2149583361
-	ip2int('0.0.0.0')
-	# 0
-	ip2int('255.255.255.255')
-	# 4294967295
+	@interactive('Calculator')
+	@asks('x', 'Enter first number: ')
+	@asks('y', 'Enter second number: ')
+	def calc(x, y):
+		"""
+		Ф-ция принимает два аргумента "х" и "у" и возвращает их сумму.
+		"""
+		return int(x) + int(y)
 
-	int2ip(2149583361)
-	# '128.32.10.1'
-	int2ip(0)
-	# '0.0.0.0'
-	int2ip(4294967295)
-	# '255.255.255.255'
-
+	calc()
+	print(calc) 
+	#Calculator
+	#Enter first number: 42
+	#Enter second number: 57
+	# 99
+	#<function test.<locals>.calc at 0x7f4e0e7a5b80>
 if __name__ == '__main__':
 	test()
