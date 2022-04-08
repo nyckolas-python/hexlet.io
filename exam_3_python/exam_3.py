@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
-from functools import wraps
+from functools import reduce, wraps
 from ipaddress import IPv4Address
-from operator import itemgetter
+from operator import add, itemgetter
 from typing import Counter
 
 
@@ -12,10 +12,7 @@ def compose(func_1, func_2):
 		print(res)
 		return res
 	return inner
-def add5(x):
-	return x + 5
-def mul3(x):
-	return x * 3
+
 
 def get_men_counted_by_year(users):
 	man = [i['birthday'][:4] for i in users if i['gender'] == 'male']
@@ -172,25 +169,54 @@ def asks(key:str, ask_number:str):
 		return inner
 	return wrapped
 
-	
-	
+
+def curry(func):
+	"""Truly curry a function of any number of parameters returns a function with exactly one parameter
+	When this new function is called, it will usually create and return another function that accepts 
+	an additional parameter, unless the original function actually obtained all it needed at which point
+	it just calls the function and returns its result """ 
+	def curried(*args): 
+		""" either calls a function with all its arguments, or returns another functiont 
+		that obtains another argument """
+		if len(args) == func.__code__.co_argcount:
+			ans = func(*args)
+			return ans
+		else:
+			return lambda x: curried(*(args+(x,)))
+	return curried
+
+glider = [' * ', '  *', '***']
+def display(image):
+    for line in image:
+        print(line)
+pair = lambda x: [x, x]
+dup = lambda x: x + x
+def enlarge(img):
+	img = map(dup,'$'.join(glider)) # задваиваем каждый символ, добавляем разделитель $
+	#print(list(img)) # ['  ', '**', '  ', '$$', '  ', '  ', '**', '$$', '**', '**', '**']
+	img = "".join(img) # склеиваем все єлементы списка в строку
+	print(img) # '   **  $$    **$$******'
+	img = img.split('$$') # разделяем строку в список, разделитель $$
+	print(img) # ['  **  ', '    **', '******']
+	img = map(pair,img) # удваиваем каждый элемент списка
+	#print(list(img)) # [['  **  ', '  **  '],['    **', '    **'],['******', '******']]
+	img = sum(img,[]) # сглажеваем список, убираем один уровень вложенности!
+	print(img) # ['  **  ', '  **  ', '    **', '    **', '******', '******']
+	return img
+
 def test():
 
-	@interactive('Calculator')
-	@asks('x', 'Enter first number: ')
-	@asks('y', 'Enter second number: ')
-	def calc(x, y):
-		"""
-		Ф-ция принимает два аргумента "х" и "у" и возвращает их сумму.
-		"""
-		return int(x) + int(y)
+	display(glider)
+# =>  *
+# =>   *
+# => ***
+	display(enlarge(glider))
+# =>   **
+# =>   **
+# =>     **
+# =>     **
+# => ******
+# => ******
 
-	calc()
-	print(calc) 
-	#Calculator
-	#Enter first number: 42
-	#Enter second number: 57
-	# 99
-	#<function test.<locals>.calc at 0x7f4e0e7a5b80>
 if __name__ == '__main__':
 	test()
