@@ -220,30 +220,21 @@ def histo(alist:list, min_value=None, max_value=None, bar_char='#'):
 		res.append(line) # дополняем список результатами
 	return '\n'.join(res) # форматируем результат для вывода на экран
 	
+def filter_anagrams(word:str, alist:list):
+	res = [i for i in alist if Counter(word) == Counter(i)]
+	print(res)
+	return res
 
 def test():
 	
-	print(histo([1, 1, 3, 4, 5, 5, 1]))
-	# => 1/### 3
-	# => 2/
-	# => 3/# 1
-	# => 4/# 1
-	# => 5/## 2
-	print(histo([1, 1, 3, 4, 5], bar_char = '*'))
-	# => 1|** 2
-	# => 2|
-	# => 3|* 1
-	# => 4|* 1
-	# => 5|* 1
-	print(histo([1, 1, 3, 4, 5], min_value = 3, max_value = 4))
-	# => 3|# 1
-	# => 4|# 1
-	print(histo([], min_value = 1, max_value = 5))
-	# => 1|
-	# => 2|
-	# => 3|
-	# => 4|
-	# => 5|
+	list(filter_anagrams('abba', ['aabb', 'abcd', 'bbaa', 'dada']))
+	# ['aabb', 'bbaa']
+	list(filter_anagrams('racer', ['crazer', 'carer', 'racar', 'caers', 'racer']))
+	# ['carer', 'racer']
+	list(filter_anagrams('laser', ['lazing', 'lazy',  'lacer']))
+	# []
+	list(filter_anagrams([1, 2], [[2, 1], [2, 2], [1, 2]]))
+	# [[2, 1], [1, 2]]
 
 if __name__ == '__main__':
 	test()
