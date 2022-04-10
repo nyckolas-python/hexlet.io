@@ -225,16 +225,21 @@ def filter_anagrams(word:str, alist:list):
 	print(res)
 	return res
 
+def same_parity_filter(alist):
+	res = []
+	if len(alist) > 0:
+		res = [i for i in alist if abs(alist[0] % 2) == abs(i % 2)]
+	print(res)
+	return res
+
 def test():
 	
-	list(filter_anagrams('abba', ['aabb', 'abcd', 'bbaa', 'dada']))
-	# ['aabb', 'bbaa']
-	list(filter_anagrams('racer', ['crazer', 'carer', 'racar', 'caers', 'racer']))
-	# ['carer', 'racer']
-	list(filter_anagrams('laser', ['lazing', 'lazy',  'lacer']))
+	same_parity_filter([])
 	# []
-	list(filter_anagrams([1, 2], [[2, 1], [2, 2], [1, 2]]))
-	# [[2, 1], [1, 2]]
+	same_parity_filter([2, 0, 1, -3, 10, -2])
+	# [2, 0, 10, -2]
+	same_parity_filter([-1, 0, 1, -3, 10, -2])
+	# [-1, 1, -3]
 
 if __name__ == '__main__':
 	test()
