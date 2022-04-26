@@ -48,13 +48,9 @@ def test():
               {'name': 'photo.jpg',
                'type': 'directory',
                'meta': {'hide': True},
-<<<<<<< HEAD
                'children': [{'name': 'avatar_inside.jpg',
                              'type': 'file',
                              'meta': {'size': 100}}]}]}
-=======
-               'children': []}]}
->>>>>>> 609df2cb51494b4982897e5b74705b62764a0dfb
 {'name': 'avatar.jpg', 'type': 'file', 'meta': {'size': 50}}
 '''
 
