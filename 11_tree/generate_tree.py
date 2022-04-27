@@ -33,6 +33,13 @@ def is_directory(tree):
 def is_file(tree):
 	return True if tree['type'] == 'file' else False
 
+def flatten(S):
+    if S == []:
+        return S
+    if isinstance(S[0], list):
+        return flatten(S[0]) + flatten(S[1:])
+    return S[:1] + flatten(S[1:])
+
 def test():
 	
 	tree = mkdir('etc', [
