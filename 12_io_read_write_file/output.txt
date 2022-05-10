@@ -1,0 +1,10 @@
+1)0 dog
+2)0 cat
+3)0 dog
+4)0 cat
+5)0 dog
+6)0 cat
+7)0 dog
+8)0 cat
+9)0 dog
+10)0 cat
