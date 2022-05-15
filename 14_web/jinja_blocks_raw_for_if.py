@@ -34,13 +34,24 @@ cities = [{'id': 1, 'city': 'Kyiv'},
 {'id': 2, 'city': 'New York'},
 {'id': 3, 'city': 'London'},
 {'id': 4, 'city': 'Coppen'},
-{'id': 5, 'city': 'Zinkiv'}]
+{'id': 5, 'city': 'Poltava'},
+{'id': 6, 'city': 'Zinkiv'}]
 
 # -% - убираетперенос строки
 link = '''<select name="cities">
-{% for c in cities -%}
+{%- for c in cities %}
+	{% if c.id < 5 -%}
+
+	<!- id < 5 ->
 	<option value="{{c['id']}}">{{c['city']}}</option>
-{% endfor -%}
+	{% elif c.id == 5 -%}
+	<!- id == 5 ->
+	<option value="{{c['id']}}">{{c['city']}}</option>
+	{% else -%}
+	<!- else ->
+	<option value="{{c['id']}}">{{c['city']}}</option>
+	{%- endif -%}
+{% endfor %}
 </select>'''
 tm = Template(link)
 msg = tm.render(cities=cities)
