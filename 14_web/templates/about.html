@@ -1,9 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>{{ title }}</title>
-</head>
-<body>
-	<h1>{{ title }}</h1>
-</body>
-</html>
+{# берем структору и заполняем её своим контентом #}
+{% extends 'default.tpl' %}
+
+{% block title %}About Site{% endblock %}
+
+{% block content %}
+{# ф-ция super() добавляет все что было в родительском блоке #}
+{% block table_content %}{{ super() }}{% endblock table_content %}
+<h1>{{ self.title() }}</h1>
+<p>The best site if you finish him</p>
+{% endblock content %}
+
+{% block item %}<p class="item">{{ super() }}</p>{% endblock item %}
