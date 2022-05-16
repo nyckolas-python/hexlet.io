@@ -12,4 +12,5 @@
 		<li>Weigth: {{user.weight}}
 		</ul>
 	{% endcall -%}
+{{ dlg.dialog_1('Attention', 'Its test of dialog import')}}
 <p>END Page content
