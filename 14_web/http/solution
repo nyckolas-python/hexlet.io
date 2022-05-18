@@ -1,0 +1,45 @@
+# Задание отправка форм
+
+telnet localhost 8080
+POST /session/new HTTP/1.1
+Host: hexlet.local
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 28
+
+username=admin&password=secret
+
+
+# Задание Transfer-Encoding
+
+telnet localhost 8080
+GET /stream HTTP/1.1
+Host: hexlet.local
+Connection: close
+
+
+# Задание Передача данных query string
+
+telnet localhost 8080
+GET /?key=value&anotherkey=anothervalue HTTP/1.1
+Host: hexlet.local
+Connection: close
+
+# Задание Перенаправление
+
+telnet localhost 8080
+POST /session/new HTTP/1.1
+Host: hexlet.local
+
+# Задание Базовая аутентификация
+
+telnet localhost 8080
+GET /admin HTTP/1.1
+Host: hexlet.local
+Authorization: Basic QWxsYWRpbjpvcGVuIHNlc2Ft
+
+# Задание Cookie
+
+telnet localhost 8080
+GET /account HTTP/1.1
+Host: hexlet.local
+set-cookie: name=user; secret=secret_hash; domain=.hexlet.local; path=/account; expires=Sat, 18 Jun 2022 09:19:34
