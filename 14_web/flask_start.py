@@ -1,7 +1,7 @@
 from flask import Flask, render_template
 app = Flask(__name__)
 
-menu = ["Установка", "Первое приложение", "Обратная связь"]
+menu = ["Установка", "Первое приложение", "Обратная связь", "New item"]
 
 @app.route('/')
 def index():
