@@ -1,6 +1,20 @@
-from flask import Flask
+from flask import Flask, render_template
+from flask_debugtoolbar import DebugToolbarExtension
+import logging
 
 app = Flask(__name__)
+app.debug = True
+app.secret_key = 'development key'
+
+toolbar = DebugToolbarExtension(app)
+
+title = '99 бутылок чего-то стояло на столе, одна упала и разбилась.'
+alist = range(1,100)
+
+@app.route('/99-bottles')
+@app.route('/99-bottles.html')
+def show_list_of_bottles():
+    return render_template('99-bottles.html', title=title, alist=alist)
 
 @app.route('/user/<username>')
 def show_user_profile(username):
