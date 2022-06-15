@@ -8,13 +8,17 @@ app.secret_key = 'development key'
 
 toolbar = DebugToolbarExtension(app)
 
-title = '99 бутылок чего-то стояло на столе, одна упала и разбилась.'
+title = 'Шаблоны для Flask.'
 alist = range(1,100)
 
 @app.route('/99-bottles')
 @app.route('/99-bottles.html')
 def show_list_of_bottles():
     return render_template('99-bottles.html', title=title, alist=alist)
+
+@app.route('/args', methods=['GET', 'POST'])
+def show_query_sring_args():
+    return render_template('args.html', title=title)
 
 @app.route('/user/<username>')
 def show_user_profile(username):
