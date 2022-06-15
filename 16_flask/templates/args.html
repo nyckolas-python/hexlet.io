@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{ title }}</title>
+</head>
+<body>
+	<h1>{{ title }}</h1>
+
+	<table class="iksweb">
+		<tbody>
+			<tr>
+				{% for m in request.args.getlist('a')|sort(reverse=true) %}
+				<td>{{ m }} - парметр a</td>
+				{% endfor %}
+			</tr>
+			<tr>
+				{% for m in request.args.getlist('b') %}
+				<td>{{ m }} - парметр b</td>
+				{% endfor %}
+			</tr>
+			<tr>
+				{% for m in request.args.getlist('c')|sort(reverse=true) %}
+				<td>{{ m }} - парметр c</td>
+				{% endfor %}
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>
