@@ -11,6 +11,7 @@ toolbar = DebugToolbarExtension(app)
 
 title = 'Динамические URL. Сложный роутинг. Шаблонизация Jinja2. Query String. Request. Respose.'
 alist = range(1,100)
+menu = ['Динамические URL', 'Сложный роутинг', 'Шаблонизация Jinja2', 'Query String', 'Request', 'Respose']
 
 
 '''
@@ -59,7 +60,7 @@ def show_list_of_bottles():
 '''
 @app.route('/')
 def index():
-    return 'index'# …
+    return render_template('index.html', title=title, menu=menu)# …
 
 @app.route('/posts/', defaults={'page': 1})
 @app.route('/posts/page/<int:page>')
