@@ -1,0 +1,1 @@
+![Screenshot][SW.BAND] 1. Высоченная зарплата.jpg
