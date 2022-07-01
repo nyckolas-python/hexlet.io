@@ -22,5 +22,7 @@ def f(x):
 f(10) # Calculating... 100
 f(42) # Calculating... 420
 f(10) # We have in cache: 100
-f(42) # We have in cache: 100
-print(cache) # {10: 100, 42: 420}
+f(42) # We have in cache: 420
+f(42) # We have in cache: 420
+f(23) # Calculating... 230
+print(cache) # {10: 100, 42: 420, 23: 230}
