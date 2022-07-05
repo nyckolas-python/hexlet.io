@@ -1,4 +1,5 @@
 ![exercise_1](https://github.com/nyckolas-work/hexlet.io/blob/master/18_oop/exercises_jpg/1.jpg)
 ![exercise_2](https://github.com/nyckolas-work/hexlet.io/blob/master/18_oop/exercises_jpg/2.jpg)
 ![exercise_3](https://github.com/nyckolas-work/hexlet.io/blob/master/18_oop/exercises_jpg/3.jpg)
-![exercise_4](https://github.com/nyckolas-work/hexlet.io/blob/master/18_oop/exercises_jpg/3.jpg)
+![exercise_4](https://github.com/nyckolas-work/hexlet.io/blob/master/18_oop/exercises_jpg/4.jpg)
+![exercise_5](https://github.com/nyckolas-work/hexlet.io/blob/master/18_oop/exercises_jpg/5.jpg)
