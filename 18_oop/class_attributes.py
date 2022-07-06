@@ -1,9 +1,9 @@
 # Атрибуты класса
 
 class Person:
-    name = 'Mykola'
-    age = 32
-    
+	name = 'Mykola'
+	age = 32
+	
 # Магический метод, выводит mappingproxy - словарь совсеми доступными методами.
 print(Person.__dict__)
 
