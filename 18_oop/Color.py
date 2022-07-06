@@ -9,9 +9,9 @@ def rgb(color):
 		return 'rgb(0, 0, 255)'
 
 class Color:
-    red = rgb('red')
-    green = rgb('green')
-    blue = rgb('blue')
-    
+	red = rgb('red')
+	green = rgb('green')
+	blue = rgb('blue')
+	
 print(Color.red) # rgb(255, 0, 0)
 print(Color.green == 'rgb(0, 255, 0)') # True
