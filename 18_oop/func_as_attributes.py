@@ -1,13 +1,13 @@
 # Функция как атрибут класса
 
 class Car:
-    model = 'BMW'
-    engine = 1.6
-    
-    @staticmethod
-    def drive():
-        print("Let's go")
-        
+	model = 'BMW'
+	engine = 1.6
+	
+	@staticmethod
+	def drive():
+		print("Let's go")
+		
 a = Car()
 # При обращении к имени атрибуту-функции без вызова
 # В самом классе выводит <function> а в экземпляре класса получаем <bound method>
