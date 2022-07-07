@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 class Counter:
-	value = int(0)
+	def __init__(self, value=0) -> int:
+		self.value = value
 # Именно через аргумент self метод получает доступ к атрибутам связанного объекта 
 # (и его класса, конечно же).
 	def inc(self, delta=1):
