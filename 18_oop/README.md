@@ -5,3 +5,4 @@
 ![exercise_5](https://github.com/nyckolas-work/hexlet.io/blob/master/18_oop/exercises_jpg/5.jpg)
 ![exercise_6](https://github.com/nyckolas-work/hexlet.io/blob/master/18_oop/exercises_jpg/6.jpg)
 ![exercise_7](https://github.com/nyckolas-work/hexlet.io/blob/master/18_oop/exercises_jpg/7.jpg)
+![exercise_8](https://github.com/nyckolas-work/hexlet.io/blob/master/18_oop/exercises_jpg/8.jpg)
