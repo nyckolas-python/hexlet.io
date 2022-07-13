@@ -20,5 +20,8 @@ from hello_django import views
 urlpatterns = [
     path('', views.index),
     path('calc/', include('hello_django.calc.urls')),  # <- новая строчка
+    path('about/', include('hello_django.simple_blog.urls')),  # <- новая строчка
+    path('simple_blog/articles', include('hello_django.simple_blog.articles.urls')),  # <- новая строчка
+    path('simple_blog/categories', include('hello_django.simple_blog.categories.urls')),  # <- новая строчка
     # path('admin/', admin.site.urls),
 ]

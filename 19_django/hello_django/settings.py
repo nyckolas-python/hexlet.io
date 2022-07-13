@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'hello_django',
     'hello_django.calc',  # <- добавляем эту строчку
+    'hello_django.simple_blog',  # <- добавляем эту строчку
+    'hello_django.simple_blog.articles',  # <- добавляем эту строчку
+    'hello_django.simple_blog.categories',  # <- добавляем эту строчку
 ]
 
 MIDDLEWARE = [
