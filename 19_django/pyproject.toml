@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "19_django"
+version = "0.1.0"
+description = "First Django Project"
+authors = ["nyckolas <nyckolas.work@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+Django = "^4.0.6"
+
+[tool.poetry.dev-dependencies]
+gunicorn = "^20.1.0"
+pytest = "^7.1.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
